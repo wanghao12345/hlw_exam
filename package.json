@@ -1,0 +1,19 @@
+{
+  "name": "hlw_exam",
+  "version": "1.0.0",
+  "description": "华龙信用公务员考试系统",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wanghao12345/hlw_exam.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wanghao12345/hlw_exam/issues"
+  },
+  "homepage": "https://github.com/wanghao12345/hlw_exam#readme"
+}

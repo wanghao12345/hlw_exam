@@ -71,7 +71,7 @@ module.exports = {
                     loader: 'url-loader',
                     options: {
                         // 把小于500B的文件打成Base64的格式，写入JS
-                        limit: 1000,
+                        limit: 5000,
                         // 打包后的图片放到images文件夹下
                         outputPath: 'images/',
                         // 与CSS中背景图片路径一致

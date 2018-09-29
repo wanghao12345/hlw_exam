@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/pages/login/Login'
 import Home from '@/pages/home/Home'
+import Paper from '@/pages/paper/Paper'
 
 
 Vue.use(Router);
@@ -21,6 +22,11 @@ export default new Router({
             path: '/home',
             name: 'home',
             component: Home
+        },
+        {
+            path: '/paper',
+            name: 'paper',
+            component: Paper
         }
     ]
 })

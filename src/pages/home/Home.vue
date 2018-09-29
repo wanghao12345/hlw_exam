@@ -6,17 +6,17 @@
                 <img v-show="isAllowExam" src="../../../static/img/home-icon1.png" alt="开始考试">
                 <img v-show="!isAllowExam" src="../../../static/img/home-icon1-no.png" alt="开始考试">
             </div>
-            <div class="item-text item-text1">开始考试</div>
+            <div class="item-text item-text1" @click="handleStartExam">开始考试</div>
         </div>
         <div class="item-box item-box2">
             <div class="item-icon item-icon2">
-                <img src="../../../static/img/home-icon2.png" alt="开始考试">
+                <img src="../../../static/img/home-icon2.png" alt="教材下载">
             </div>
             <div class="item-text item-text2">教材下载</div>
         </div>
         <div class="item-box item-box3">
             <div class="item-icon item-icon3">
-                <img src="../../../static/img/home-icon3.png" alt="开始考试">
+                <img src="../../../static/img/home-icon3.png" alt="个人中心">
             </div>
             <div class="item-text item-text3">个人中心</div>
         </div>
@@ -28,7 +28,17 @@
         name: "Home",
         data () {
             return {
-                isAllowExam: false
+                isAllowExam: true
+            }
+        },
+        methods: {
+            /**
+             * 开始考试
+             */
+            handleStartExam () {
+                if(this.isAllowExam){
+                    this.$router.push('/paper');
+                }
             }
         }
     }

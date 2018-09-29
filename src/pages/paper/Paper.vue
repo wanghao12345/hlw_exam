@@ -8,7 +8,10 @@
             <div class="paper-list">15/36</div>
         </div>
         <div class="paper-content">
-            <paper-single v-if="PaperType==1"></paper-single>
+            <paper-single
+                v-if="PaperType==1"
+                :paperData="singlePaperData"
+            ></paper-single>
             <paper-multi v-if="PaperType==2"></paper-multi>
             <paper-judgment v-if="PaperType==3"></paper-judgment>
         </div>
@@ -33,7 +36,18 @@
         data () {
             return {
                 isNextPaper: true, //是否进入下一页
-                PaperType: 1  //试卷类型：1、单选  2、多选  3、判断
+                PaperType: 1,  //试卷类型：1、单选  2、多选  3、判断
+                singlePaperData: [
+                    {
+                        'name': 'A.功能升高或兴奋'
+                    },{
+                        'name': 'B.功能降低功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制或抑制'
+                    },{
+                        'name': 'C.兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制'
+                    },{
+                        'name': 'D.产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能'
+                    }
+                ]
             }
         },
         methods: {

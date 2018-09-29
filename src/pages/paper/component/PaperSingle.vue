@@ -2,7 +2,7 @@
     <div class="single-box">
         <div class="title-box">
             <span class="title-type">单选题</span>
-            <span class="title-text">1.药物作用的基本表现是机体器官组织：<i>(2分)</i></span>
+            <span class="title-text">1.测试题赐额是大家看法的接口JFK的健康<i>(2分)</i></span>
         </div>
         <div class="title-content">
             <ul>
@@ -13,28 +13,6 @@
                     </span>
                     <span class="single-text">{{item.name}}</span>
                 </li>
-
-
-
-                <!---->
-                <!--<li>-->
-                    <!--<span @click="handleClickSelect" class="icon">-->
-                        <!--<img src="../../../../static/img/select-icon.png" alt="选择">-->
-                    <!--</span>-->
-                    <!--<span class="single-text">B.功能降低或抑制</span>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<span @click="handleClickSelect" class="icon">-->
-                        <!--<img src="../../../../static/img/select-icon.png" alt="选择">-->
-                    <!--</span>-->
-                    <!--<span class="single-text">C.兴奋或抑制</span>-->
-                <!--</li>-->
-                <!--<li>-->
-                    <!--<span @click="handleClickSelect" class="icon">-->
-                        <!--<img src="../../../../static/img/select-icon.png" alt="选择">-->
-                    <!--</span>-->
-                    <!--<span class="single-text">D.产生新的功能</span>-->
-                <!--</li>-->
             </ul>
         </div>
     </div>
@@ -43,19 +21,27 @@
 <script>
     export default {
         name: "PaperSingle",
+        props: {
+            PaperData: {
+                type: Array,
+                default: function () {
+                    return [];
+                }
+            }
+        },
         data () {
             return {
-                PaperData: [
-                    {
-                    'name': 'A.功能升高或兴奋'
-                    },{
-                        'name': 'B.功能降低功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制或抑制'
-                    },{
-                        'name': 'C.兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制'
-                    },{
-                        'name': 'D.产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能'
-                    }
-                ],
+                // PaperData: [
+                //     {
+                //     'name': 'A.功能升高或兴奋'
+                //     },{
+                //         'name': 'B.功能降低功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制或抑制'
+                //     },{
+                //         'name': 'C.兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制'
+                //     },{
+                //         'name': 'D.产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能'
+                //     }
+                // ],
                 //控制单选
                 PaperSingleStatus: [
                     {
@@ -88,6 +74,11 @@
                         this.PaperSingleStatus[i].status = false;
                     }
                 }
+            }
+        },
+        watch: {
+            PaperData(val, oldVal){
+                console.log("a: " + val, oldVal)
             }
         }
     }
@@ -122,6 +113,9 @@
         line-height: 0.8rem !important;
         margin-right: 0.5rem;
         margin-top: 0.2rem;
+    }
+    .title-text{
+        width: 12rem;
     }
     .title-text i{
         font-style: normal;

@@ -5,6 +5,9 @@ import Home from '@/pages/home/Home'
 
 import Paper from '@/pages/paper/Paper'
 import TextResult from '@/pages/result/TextResult'
+import MyCenter from '@/pages/center/MyCenter'
+import MyRecord from '@/pages/center/MyRecord'
+import MyModify from '@/pages/center/MyModify'
 
 
 Vue.use(Router);
@@ -34,6 +37,21 @@ export default new Router({
             path: '/result',
             name: 'result',
             component: TextResult
+        },
+        {
+            path: '/center',
+            name: 'center',
+            component: MyCenter
+        },
+        {
+            path: '/modify',
+            name: 'modify',
+            component: MyModify
+        },
+        {
+            path: '/record',
+            name: 'record',
+            component: MyRecord
         }
     ]
 })

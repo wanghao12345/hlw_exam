@@ -81,5 +81,5 @@
 </script>
 
 <style scoped>
-
+    @import "../../../assets/styles/css/paper/paper.css";
 </style>

@@ -18,7 +18,7 @@
             <div class="item-icon item-icon3">
                 <img src="../../../static/img/home-icon3.png" alt="个人中心">
             </div>
-            <div class="item-text item-text3">个人中心</div>
+            <div class="item-text item-text3" @click="handleGotoCenter">个人中心</div>
         </div>
     </div>
 </template>
@@ -39,6 +39,12 @@
                 if(this.isAllowExam){
                     this.$router.push('/paper');
                 }
+            },
+            /**
+             * 个人中心
+             */
+            handleGotoCenter () {
+                this.$router.push('/center');
             }
         }
     }

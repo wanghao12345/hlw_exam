@@ -27,10 +27,15 @@
         </div>
         <div class="result-bottom">
             <div class="btn-div">
-                <button class="onceMore" :class="{'onceMore' : resultStatus, 'noonceMore' : !resultStatus}">再考一次</button>
+                <router-link
+                    to="/paper"
+                    tag="button"
+                    class="onceMore"
+                    :class="{'onceMore' : resultStatus, 'noonceMore' : !resultStatus}"
+                >再考一次</router-link >
             </div>
             <div class="btn-div">
-                <button class="goHome">返回首页</button>
+                <router-link to="/home" tag="button" class="goHome">返回首页</router-link>
             </div>
         </div>
     </div>

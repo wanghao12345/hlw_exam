@@ -8,12 +8,25 @@
             <div class="paper-list">15/36</div>
         </div>
         <div class="paper-content">
+
             <paper-single
                 v-if="PaperType==1"
-                :paperData="singlePaperData"
+                ref="singleChild"
+                :singlePaperData="singlePaperData"
+                v-on:childNextPaper = "childNextPaper"
             ></paper-single>
-            <paper-multi v-if="PaperType==2"></paper-multi>
-            <paper-judgment v-if="PaperType==3"></paper-judgment>
+            <paper-multi
+                v-if="PaperType==2"
+                ref="multiChild"
+                :multiPaperData="multiPaperData"
+                v-on:childNextPaper = "childNextPaper"
+            ></paper-multi>
+            <paper-judgment
+                v-if="PaperType==3"
+                ref="judgmentChild"
+                v-on:childNextPaper = "childNextPaper"
+            ></paper-judgment>
+
         </div>
         <div class="paper-btn">
             <button v-show="isNextPaper" @click="handleNextPaper" class="paper-next-btn">下一题</button>
@@ -35,17 +48,28 @@
         },
         data () {
             return {
-                isNextPaper: true, //是否进入下一页
+                isNextPaper: false, //是否进入下一页
                 PaperType: 1,  //试卷类型：1、单选  2、多选  3、判断
                 singlePaperData: [
                     {
                         'name': 'A.功能升高或兴奋'
                     },{
-                        'name': 'B.功能降低功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制或抑制'
+                        'name': 'B.功能降低功能降低或抑制功能降低'
                     },{
-                        'name': 'C.兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制'
+                        'name': 'C.兴奋或抑制兴奋或抑制兴奋或'
                     },{
-                        'name': 'D.产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能'
+                        'name': 'D.产生新的功能产生新的功能的功'
+                    }
+                ],
+                multiPaperData: [
+                    {
+                        'name': 'A.功能升高或兴奋'
+                    },{
+                        'name': 'B.功能降低功能降低或抑制功能降低'
+                    },{
+                        'name': 'C.兴奋或抑制兴奋或抑制兴奋或'
+                    },{
+                        'name': 'D.产生新的功能产生新的功能的功'
                     }
                 ]
             }
@@ -53,10 +77,41 @@
         methods: {
             /**
              * 获取下一题
+             * 并给子组件传递事件
              */
             handleNextPaper () {
-                this.PaperType = 2;
-            }
+                this.PaperType = Math.floor(Math.random()*3)+1;
+                // this.PaperType = 3;
+                console.log(this.PaperType);
+                this.isNextPaper = false;
+
+                //给子组件传递信息
+                if(this.PaperType==1){
+                    this.handleSendSingle();
+                }else if(this.PaperType==2){
+                    this.handleSendMulti();
+                }else if(this.PaperType == 3){
+                    this.handleSendJudgment();
+                }
+
+            },
+            handleSendSingle () {
+                this.$refs.singleChild.parentResetSingle();
+            },
+            handleSendMulti () {
+                this.$refs.multiChild.parentResetMulti();
+            },
+            handleSendJudgment () {
+                this.$refs.judgmentChild.parentResetJudgment();
+            },
+            /**
+             * 获取子组件的事件
+             * @param value
+             */
+            childNextPaper (value) {
+                this.isNextPaper = value;
+            },
+
         }
     }
 </script>
@@ -120,6 +175,12 @@
         background: url("../../../static/img/paper-next.png");
         background-size: 100% 100%;
     }
+    .paper-btn .paper-next-btn:active{
+        top: 0.1rem;
+        width: 9.8rem;
+        height: 1.8rem;
+    }
+
     .paper-btn .paper-no-next-btn{
         background: url("../../../static/img/paper-no-next.png");
         background-size: 100% 100%;

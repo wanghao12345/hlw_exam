@@ -6,7 +6,7 @@
         </div>
         <div class="title-content">
             <ul>
-                <li v-for="(item, index) in PaperData">
+                <li v-for="(item, index) in singlePaperData">
                     <span @click="handleClickSelect(index)" class="icon">
                         <img v-show="!PaperSingleStatus[index].status" src="../../../../static/img/select-icon.png" alt="选择">
                         <img v-show="PaperSingleStatus[index].status" src="../../../../static/img/selected-icon.png" alt="选择">
@@ -22,31 +22,16 @@
     export default {
         name: "PaperSingle",
         props: {
-            PaperData: {
-                type: Array,
-                default: function () {
-                    return [];
-                }
-            }
+            singlePaperData: Array,
+            required: true
         },
         data () {
             return {
-                // PaperData: [
-                //     {
-                //     'name': 'A.功能升高或兴奋'
-                //     },{
-                //         'name': 'B.功能降低功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制功能降低或抑制或抑制'
-                //     },{
-                //         'name': 'C.兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制兴奋或抑制'
-                //     },{
-                //         'name': 'D.产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能产生新的功能'
-                //     }
-                // ],
                 //控制单选
                 PaperSingleStatus: [
                     {
                         'name': 'A',
-                        'status': true
+                        'status': false
                     },
                     {
                         'name': 'B',
@@ -74,84 +59,41 @@
                         this.PaperSingleStatus[i].status = false;
                     }
                 }
-            }
-        },
-        watch: {
-            PaperData(val, oldVal){
-                console.log("a: " + val, oldVal)
+                if(this.PaperSingleStatus[index].status){
+                    this.$emit('childNextPaper', true);
+                }else{
+                    this.$emit('childNextPaper', false);
+                }
+            },
+            /**
+             * 接受父组件事件
+             */
+            parentResetSingle () {
+                this.PaperSingleStatus = [
+                    {
+                        'name': 'A',
+                        'status': false
+                    },
+                    {
+                        'name': 'B',
+                        'status': false
+                    },
+                    {
+                        'name': 'C',
+                        'status': false
+                    },
+                    {
+                        'name': 'D',
+                        'status': false
+                    }
+                ];
             }
         }
     }
 </script>
 
 <style scoped>
-    .single-box{
-        width: 100%;
-        height: 100%;
-        overflow-y: auto;
-    }
-    .title-box{
-        width: 100%;
-        padding: 1rem 0.5rem 2rem 0.5rem;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: space-between;
-    }
-    .title-box span{
-        font-size: 0.8rem;
-        display: block;
-        line-height: 1.2rem;
-    }
-    .title-type{
-        width: 3rem;
-        height: 0.8rem;
-        font-size: 0.6rem !important;
-        border: 1px solid #3daff0;
-        color: #3daff0;
-        border-radius: 5px;
-        text-align: center;
-        line-height: 0.8rem !important;
-        margin-right: 0.5rem;
-        margin-top: 0.2rem;
-    }
-    .title-text{
-        width: 12rem;
-    }
-    .title-text i{
-        font-style: normal;
-        font-size: 0.7rem;
-        color: #3baced;
-    }
-    .title-content{
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0 0.5rem;
-    }
-    .title -content ul{
-
-    }
-    .title-content ul li{
-        display: flex;
-        justify-content: flex-start;
-        line-height: 1rem;
-        margin-bottom: 0.5rem;
-        min-height: 1.8rem;
-    }
-    .title-content ul li span{
-
-    }
-    .title-content ul li span.icon{
-        width: 3rem;
-        text-align: center;
-    }
-    .title-content ul li span.icon img{
-        width: 1.5rem;
-    }
-    .title-content ul li span.single-text{
-        font-size: 0.8rem;
-        line-height: 1.4rem;
-        width: 12rem;
-    }
+    @import "../../../assets/styles/css/paper/paper.css";
 </style>
 
 

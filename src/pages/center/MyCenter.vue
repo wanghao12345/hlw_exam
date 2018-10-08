@@ -30,15 +30,35 @@
                 </div>
             </router-link>
         </div>
-        <router-link to="/login" tag="div" class="center-logout">
+        <div class="center-logout" @click="handleLogoutRequest">
             退出登录
-        </router-link>
+        </div>
+        <!--<router-link to="/login" tag="div" class="center-logout">-->
+            <!--退出登录-->
+        <!--</router-link>-->
     </div>
 </template>
 
 <script>
+    import {removeStore} from '@/config/localStorage'
     export default {
-        name: "MyCenter"
+        name: "MyCenter",
+        data () {
+            return {
+
+            }
+        },
+        methods: {
+            /**
+             * 退出登录
+             */
+            handleLogoutRequest(){
+                removeStore('loginUserName');
+                removeStore('loginPassWord');
+                removeStore('loginUserToken');
+                this.$router.push('/login');
+            }
+        }
     }
 </script>
 

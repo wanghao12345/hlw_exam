@@ -21,6 +21,7 @@
 
 <script>
     import {sendLogin} from '@/service/getData'
+    import {setStore, getStore} from '@/config/localStorage'
     export default {
         name: "Login",
         data () {
@@ -31,6 +32,14 @@
                     password: ''
                 },
                 clickLoginBtn: false
+            }
+        },
+        mounted() {
+            let loginUserName = getStore('loginUserName');
+            let loginPassWord = getStore('loginPassWord');
+            let loginUserToken = getStore('loginUserToken');
+            if(loginUserName && loginPassWord && loginUserToken){
+                this.$router.push('/home');
             }
         },
         methods: {
@@ -44,10 +53,10 @@
              * 登录按钮
              */
             handleClickLogin () {
-                this.$router.push('/home');
+                this.$loadingOpen();
                 this.clickLoginBtn = true;
                 if(this.checkLoginFormNull()){
-                    this.checkLoginFormError();
+                    this.handleLoginRequest();
                 }
             },
             /**
@@ -71,11 +80,23 @@
             /**
              * 验证账号
              */
-            async checkLoginFormError () {
+            async handleLoginRequest () {
                 let res = await sendLogin(this.loginForm.username, this.loginForm.password);
-
-
-
+                this.$loadingClose();
+                if(res.token){
+                    this.saveUserInfo(res.token);
+                }else{
+                    this.msg = res.data;
+                }
+            },
+            /**
+             * 保存个人信息
+             */
+            saveUserInfo (token) {
+                setStore('loginUserName', this.loginForm.username);
+                setStore('loginPassWord', this.loginForm.password);
+                setStore('loginUserToken', token);
+                this.$router.push('/home');
             }
         }
     }

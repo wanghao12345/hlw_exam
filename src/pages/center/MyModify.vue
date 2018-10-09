@@ -9,27 +9,89 @@
         <div class="modify-box">
             <div class="item-box">
                 <label>旧密码</label>
-                <input type="password" placeholder="请输入您的原密码">
+                <input type="password" v-model="oldPwd" placeholder="请输入您的原密码">
             </div>
             <div class="item-box">
                 <label>新密码</label>
-                <input type="password" placeholder="新密码(6-16个字符，可用数字、字母(区分大小写))">
+                <input type="password" v-model="newPwd" placeholder="新密码(6-16个字符，可用数字、字母(区分大小写))">
             </div>
             <div class="item-box">
                 <label>确认新密码</label>
-                <input type="password" placeholder="再次输入您的密码">
+                <input type="password" v-model="reNewPwd" placeholder="再次输入您的密码">
             </div>
 
             <div class="modify-btn">
-                <button>确定修改</button>
+                <button @click="handleClickModify">确定修改</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {modifyPwd} from '@/service/getData'
     export default {
-        name: "MyModify"
+        name: "MyModify",
+        data () {
+            return {
+                oldPwd: '',
+                newPwd: '',
+                reNewPwd: '',
+            }
+        },
+        methods: {
+            /**
+             * 确定修改
+             */
+            handleClickModify () {
+                if(this.checkPwd()){
+                    this.modifyPwdRequest();
+                }
+            },
+            /**
+             * 检测密码输入规则是否合格
+             */
+            checkPwd () {
+                if (this.oldPwd.replace(/\s+/g,"") == ""){
+                    this.$myAlertOpen('原密码不能为空！');
+                   return false;
+                }
+                if (this.newPwd.replace(/\s+/g,"") == ""){
+                    this.$myAlertOpen('新密码不能为空！');
+                    return false;
+                }
+                if (this.reNewPwd.replace(/\s+/g,"") == ""){
+                    this.$myAlertOpen('确认新密码不能为空！');
+                    return false;
+                }
+                if(this.newPwd != this.reNewPwd){
+                    this.$myAlertOpen('两次输入的新密码不一致！');
+                    return false;
+                }
+                if(this.oldPwd == this.newPwd){
+                    this.$myAlertOpen('原密码和新密码不能相同！');
+                    return false;
+                }
+                return true;
+            },
+            /**
+             * 修改密码请求
+             */
+            async modifyPwdRequest () {
+                var _this = this;
+                let res = await modifyPwd(this.oldPwd, this.newPwd);
+                console.log(res);
+                if(res.code=="10"){
+                    this.$myAlertOpen(res.msg, function () {
+                        _this.$router.push('/home');
+                    }, function () {
+                        _this.$router.push('/home');
+                    });
+                }else{
+                    this.$myAlertOpen(res.msg);
+                }
+            }
+
+        }
     }
 </script>
 

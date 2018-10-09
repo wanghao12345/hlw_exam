@@ -7,7 +7,11 @@
  *http://localhost:8888/#/login
  */
 
+import {getStore} from './localStorage'
+
 let baseUrl = 'http://127.0.0.1:8080';
+let token = getStore('token');
 export {
-    baseUrl
+    baseUrl,
+    token
 }

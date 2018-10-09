@@ -24,3 +24,14 @@ export const removeStore = name => {
     if (!name) return;
     window.localStorage.removeItem(name);
 }
+
+/**
+ * 存储cookie
+ * @param name
+ * @param value
+ */
+export const setCookie = (name, value) => {
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 60 * 60 * 100000);
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+}

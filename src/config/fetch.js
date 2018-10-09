@@ -1,5 +1,6 @@
 import {
-	baseUrl
+	baseUrl,
+    token
 } from './env'
 
 export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
@@ -16,6 +17,9 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 			dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'));
 			url = url + '?' + dataStr;
 		}
+		if(token){
+			url += '&token='+token;
+		}
 	}
 
 	if (window.fetch && method == 'fetch') {
@@ -23,14 +27,15 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 			credentials: 'include',
 			method: type,
 			headers: {
-				'Accept': 'application/json',
-				'Content-Type': 'application/json'
+				// 'Accept': 'application/json',
+				// 'Content-Type': 'application/json'
 			},
 			mode: "cors",
 			cache: "force-cache"
 		}
 
 		if (type == 'POST') {
+            data.token = token;
 			Object.defineProperty(requestConfig, 'body', {
 				value: JSON.stringify(data)
 			})
@@ -58,7 +63,6 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 			}
 
 			requestObj.open(type, url, true);
-			requestObj.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			requestObj.send(sendData);
 
 			requestObj.onreadystatechange = () => {

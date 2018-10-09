@@ -5,6 +5,8 @@ import router from './router'
 import Loading from './plugin/loading/loading.js'
 Vue.use(Loading);
 
+import MyAlert from './plugin/myAlert/MyAlert.js'
+Vue.use(MyAlert);
 
 import './config/rem'
 

@@ -21,7 +21,7 @@
 
 <script>
     import {sendLogin} from '@/service/getData'
-    import {setStore, getStore} from '@/config/localStorage'
+    import {setStore, getStore, setCookie} from '@/config/localStorage'
     export default {
         name: "Login",
         data () {
@@ -37,8 +37,8 @@
         mounted() {
             let loginUserName = getStore('loginUserName');
             let loginPassWord = getStore('loginPassWord');
-            let loginUserToken = getStore('loginUserToken');
-            if(loginUserName && loginPassWord && loginUserToken){
+            let token = getStore('token');
+            if(loginUserName && loginPassWord && token){
                 this.$router.push('/home');
             }
         },
@@ -95,7 +95,7 @@
             saveUserInfo (token) {
                 setStore('loginUserName', this.loginForm.username);
                 setStore('loginPassWord', this.loginForm.password);
-                setStore('loginUserToken', token);
+                setStore('token', token);
                 this.$router.push('/home');
             }
         }

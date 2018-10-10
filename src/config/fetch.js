@@ -15,10 +15,9 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 
 		if (dataStr !== '') {
 			dataStr = dataStr.substr(0, dataStr.lastIndexOf('&'));
-			url = url + '?' + dataStr;
-		}
-		if(token){
-			url += '&token='+token;
+			url = url + '?' + dataStr + '&token='+token;
+		}else{
+            url += '?token='+token;
 		}
 	}
 
@@ -81,3 +80,11 @@ export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
 		})
 	}
 }
+
+
+
+
+
+
+
+

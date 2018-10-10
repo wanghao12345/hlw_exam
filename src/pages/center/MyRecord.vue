@@ -8,6 +8,25 @@
         </div>
         <div class="record-box">
             <ul>
+
+                <li class="bad-score" v-for="item in recordData">
+                    <div class="top">
+                        <span class="title">{{item.examName}}</span>
+                        <span class="score">100</span>
+                    </div>
+                    <div class="bottom">
+                        <div class="item">
+                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
+                            <span class="right">2018-09-25 17:04</span>
+                        </div>
+                        <div class="item">
+                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
+                            <span class="right">2018-09-25 17:04</span>
+                        </div>
+                    </div>
+                </li>
+
+
                 <li class="bad-score">
                     <div class="top">
                         <span class="title">重庆公务员诚信在线考试</span>
@@ -94,8 +113,36 @@
 </template>
 
 <script>
+    import {getHistoryRecord} from '@/service/getData'
     export default {
-        name: "MyRecord"
+        name: "MyRecord",
+        data () {
+            return {
+                recordData:[]
+            }
+        },
+        mounted () {
+            this.getRecord();
+        },
+        methods: {
+            /**
+             * 获取记录
+             */
+            async getRecord () {
+                let res = await getHistoryRecord();
+                let _this = this;
+                if(res.code === '10'){
+                    this.recordData = res.data;
+                }else{
+                    this.$myAlertOpen(res.msg, function () {
+                        _this.$router.push('/center');
+                    }, function () {
+                        _this.$router.push('/center');
+                    });
+                }
+                console.log(res);
+            }
+        }
     }
 </script>
 

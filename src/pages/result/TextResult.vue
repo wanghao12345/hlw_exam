@@ -11,15 +11,15 @@
                 <ul>
                     <li>
                         <div class="title">考试名称</div>
-                        <div class="content">公务员诚信培训在线考试</div>
+                        <div class="content">{{examTitle}}</div>
                     </li>
                     <li>
                         <div class="title">试卷总分</div>
-                        <div class="content">100分</div>
+                        <div class="content">{{paperTotalScore}}分</div>
                     </li>
                     <li>
                         <div class="title">合格分数线</div>
-                        <div class="content">60分</div>
+                        <div class="content">{{paperPassScore}}分</div>
                     </li>
 
                 </ul>
@@ -46,15 +46,35 @@
         name: "TextResult",
         data () {
             return {
-                resultStatus: false
+                resultStatus: false,
+                //试卷总分
+                paperTotalScore: 100,
+                //试卷合格分数
+                paperPassScore: 60,
+                //试卷获得分数
+                paperGetScore: 0,
+                //考试题目
+                examTitle: '公务员诚信培训在线考试'
             }
         },
         mounted () {
+
+            this.paperTotalScore = this.$route.params.totalScore;
+            this.paperPassScore = this.$route.params.passScore;
+            this.paperGetScore = this.$route.params.score;
+
+            if(this.paperGetScore >= this.paperPassScore){
+                this.resultStatus = true;
+            }else{
+                this.resultStatus = false;
+            }
+
+            this.examTitle = this.$route.params.examTitle;
             var time_canvas = document.getElementById("score-canvas");
-            this.drawMain(time_canvas, 90, "#ffffff", "#e8e8e8");
+            this.drawMain(time_canvas, this.paperGetScore, "#ffffff", "#e8e8e8", this.resultStatus);
         },
         methods: {
-            drawMain(drawing_elem, percent, forecolor, bgcolor){
+            drawMain(drawing_elem, percent, forecolor, bgcolor, isGood){
                 /*
                 @drawing_elem: 绘制对象
                 @percent：绘制圆环百分比, 范围[0, 100]
@@ -98,7 +118,7 @@
                 }
 
                 //绘制文字
-                function text(n){
+                function text(n, isGood){
                     context.save(); //save和restore可以保证样式属性只运用于该段canvas元素
                     context.fillStyle = forecolor;
                     var font_size = 15;
@@ -113,8 +133,8 @@
 
                     font_size = 15;
                     context.font = font_size + "px Helvetica";
-                    var text_width1 = context.measureText('合格').width;
-                    context.fillText('合格',center_x-text_width1/2, center_y + font_size/2 + 30);
+                    var text_width1 = context.measureText(isGood).width;
+                    context.fillText(isGood,center_x-text_width1/2, center_y + font_size/2 + 30);
                     context.restore();
                 }
                 //执行动画
@@ -122,7 +142,11 @@
                     window.requestAnimationFrame(drawFrame);
                     context.clearRect(0, 0, drawing_elem.width, drawing_elem.height);
                     backgroundCircle();
-                    text(speed);
+                    if(isGood){
+                        text(speed, '合格');
+                    }else{
+                        text(speed, '不合格');
+                    }
                     foregroundCircle(speed);
                     if(speed >= percent) return;
                     speed += 1;

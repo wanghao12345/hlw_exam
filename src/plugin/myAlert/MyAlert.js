@@ -15,7 +15,7 @@ MyAlert.install = function (Vue, myPluginOptions={}) {
 
     //通过Vue原型注册一个方法，让所有的实例共享这个方法
     //打开
-    Vue.prototype.$myAlertOpen = function (msg, queryCallback, cancerCallback) {
+    Vue.prototype.$myAlertOpen = function (msg, queryCallback=function () {}, cancerCallback=function () {}) {
 
         my_alert.msg = msg;
         my_alert.queryCallback = queryCallback;

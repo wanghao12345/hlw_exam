@@ -35,7 +35,7 @@ export default new Router({
         },
         {
             path: '/result',
-            name: 'result',
+            name: 'Result',
             component: TextResult
         },
         {

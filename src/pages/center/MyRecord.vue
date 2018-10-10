@@ -9,19 +9,19 @@
         <div class="record-box">
             <ul>
 
-                <li class="bad-score" v-for="item in recordData">
+                <li :class="{'bad-score' : item.scoreTip ==='不合格'}" v-for="item in recordData">
                     <div class="top">
                         <span class="title">{{item.examName}}</span>
-                        <span class="score">100</span>
+                        <span class="score">{{item.score}}</span>
                     </div>
                     <div class="bottom">
                         <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
+                            <span class="left">分数：<i class="good-score">{{item.score}}({{item.scoreTip}})</i></span>
+                            <span class="right">{{item.startTime}}</span>
                         </div>
                         <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
+                            <span class="left">分数：<i class="good-score">{{item.score}}({{item.scoreTip}})</i></span>
+                            <span class="right">{{item.startTime}}</span>
                         </div>
                     </div>
                 </li>
@@ -118,7 +118,10 @@
         name: "MyRecord",
         data () {
             return {
-                recordData:[]
+                //记录数据
+                recordData:[],
+                //
+                badScore: false
             }
         },
         mounted () {

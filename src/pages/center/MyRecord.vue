@@ -8,102 +8,16 @@
         </div>
         <div class="record-box">
             <ul>
-
                 <li :class="{'bad-score' : item.scoreTip ==='不合格'}" v-for="item in recordData">
                     <div class="top">
                         <span class="title">{{item.examName}}</span>
                         <span class="score">{{item.score}}</span>
                     </div>
                     <div class="bottom">
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">{{item.score}}({{item.scoreTip}})</i></span>
-                            <span class="right">{{item.startTime}}</span>
-                        </div>
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">{{item.score}}({{item.scoreTip}})</i></span>
-                            <span class="right">{{item.startTime}}</span>
-                        </div>
-                    </div>
-                </li>
 
-
-                <li class="bad-score">
-                    <div class="top">
-                        <span class="title">重庆公务员诚信在线考试</span>
-                        <span class="score">100</span>
-                    </div>
-                    <div class="bottom">
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="top">
-                        <span class="title">重庆公务员诚信在线考试</span>
-                        <span class="score">100</span>
-                    </div>
-                    <div class="bottom">
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="top">
-                        <span class="title">重庆公务员诚信在线考试</span>
-                        <span class="score">100</span>
-                    </div>
-                    <div class="bottom">
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="top">
-                        <span class="title">重庆公务员诚信在线考试</span>
-                        <span class="score">100</span>
-                    </div>
-                    <div class="bottom">
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="top">
-                        <span class="title">重庆公务员诚信在线考试</span>
-                        <span class="score">100</span>
-                    </div>
-                    <div class="bottom">
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
-                        </div>
-                        <div class="item">
-                            <span class="left">分数：<i class="good-score">100(合格)</i></span>
-                            <span class="right">2018-09-25 17:04</span>
+                        <div class="item" v-for="detail in item.details">
+                            <span class="left">分数：<i class="good-score" :class="{'bad-score' : detail.scoreTip === '不合格'}">{{detail.score}}({{detail.scoreTip}})</i></span>
+                            <span class="right">{{detail.startTime}}</span>
                         </div>
                     </div>
                 </li>
@@ -125,6 +39,7 @@
             }
         },
         mounted () {
+            this.$loadingOpen();
             this.getRecord();
         },
         methods: {
@@ -144,6 +59,7 @@
                     });
                 }
                 console.log(res);
+                this.$loadingClose();
             }
         }
     }
@@ -222,6 +138,9 @@
         font-style: normal;
         color: #64c7ff;
         font-size: 0.65rem;
+    }
+    .record-box ul li .bottom .item span i.bad-score{
+        color: #ff8080;
     }
     .record-box ul li.bad-score .bottom .item span i.good-score{
         color: #ff8080;

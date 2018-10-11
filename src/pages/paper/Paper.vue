@@ -203,7 +203,7 @@
                     this.singlePaperData = [];
 
                     this.paperType = '单选题';
-                    this.paperTitle = this.paperConfigData[0].questions[this.currentPaper - 1].title + this.paperConfigData[0].questions[this.currentPaper - 1].id;
+                    this.paperTitle = this.paperConfigData[0].questions[this.currentPaper - 1].title;
                     this.currentPaperId = this.paperConfigData[0].questions[this.currentPaper - 1].id;
                     this.paperCore = this.paperConfigData[0].questions[this.currentPaper - 1].score;
 
@@ -216,7 +216,7 @@
                     this.singlePaperData = [];
 
                     this.paperType = '判断题';
-                    this.paperTitle = this.paperConfigData[1].questions[this.currentPaper - singleElectNum -1].title + this.paperConfigData[1].questions[this.currentPaper - singleElectNum -1].id;
+                    this.paperTitle = this.paperConfigData[1].questions[this.currentPaper - singleElectNum -1].title;
                     this.currentPaperId = this.paperConfigData[1].questions[this.currentPaper - singleElectNum -1].id;
                     this.paperCore = this.paperConfigData[1].questions[this.currentPaper - singleElectNum - 1].score;
 

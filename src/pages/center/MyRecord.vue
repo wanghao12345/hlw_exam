@@ -52,11 +52,20 @@
                 if(res.code === '10'){
                     this.recordData = res.data;
                 }else{
-                    this.$myAlertOpen(res.msg, function () {
-                        _this.$router.push('/center');
-                    }, function () {
-                        _this.$router.push('/center');
-                    });
+
+                    if(res.code === "-50"){
+                        this.$myAlertOpen(res.msg, function () {
+                            _this.$router.push('/login');
+                        }, function () {
+                            _this.$router.push('/login');
+                        });
+                    }else{
+                        this.$myAlertOpen(res.msg, function () {
+                            _this.$router.push('/center');
+                        }, function () {
+                            _this.$router.push('/center');
+                        });
+                    }
                 }
                 console.log(res);
                 this.$loadingClose();

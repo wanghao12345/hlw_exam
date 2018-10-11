@@ -80,14 +80,22 @@
                 var _this = this;
                 let res = await modifyPwd(this.oldPwd, this.newPwd);
                 console.log(res);
-                if(res.code=="10"){
+                if(res.code==="10"){
                     this.$myAlertOpen(res.msg, function () {
                         _this.$router.push('/home');
                     }, function () {
                         _this.$router.push('/home');
                     });
                 }else{
-                    this.$myAlertOpen(res.msg);
+                    if(res.code === "-50"){
+                        this.$myAlertOpen(res.msg, function () {
+                            _this.$router.push('/login');
+                        }, function () {
+                            _this.$router.push('/login');
+                        });
+                    }else{
+                        this.$myAlertOpen(res.msg);
+                    }
                 }
             }
 

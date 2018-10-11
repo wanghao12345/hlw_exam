@@ -154,7 +154,7 @@
                 let _this = this;
                 let res = await getCurExam();
                 console.log(res);
-                if(res.code=='10'){
+                if(res.code==='10'){
                     let data = res.data;
                     this.countDownTime(parseInt(data.limitTime));
                     this.sumPaper = data.questionNumber;
@@ -164,11 +164,20 @@
                     this.getCurrentPaperData();
 
                 }else{
-                    this.$myAlertOpen(res.msg, function () {
-                        _this.$router.push('/home');
-                    }, function () {
-                        _this.$router.push('/home');
-                    });
+
+                    if(res.code === "-50"){
+                        this.$myAlertOpen(res.msg, function () {
+                            _this.$router.push('/login');
+                        }, function () {
+                            _this.$router.push('/login');
+                        });
+                    }else{
+                        this.$myAlertOpen(res.msg, function () {
+                            _this.$router.push('/home');
+                        }, function () {
+                            _this.$router.push('/home');
+                        });
+                    }
                 }
                 this.$loadingClose();
             },
@@ -292,11 +301,20 @@
                         }
                     });
                 }else{
-                    this.$myAlertOpen(res.msg, function () {
-                        _this.$router.push('/home');
-                    }, function () {
-                        _this.$router.push('/home');
-                    });
+
+                    if(res.code === "-50"){
+                        this.$myAlertOpen(res.msg, function () {
+                            _this.$router.push('/login');
+                        }, function () {
+                            _this.$router.push('/login');
+                        });
+                    }else{
+                        this.$myAlertOpen(res.msg, function () {
+                            _this.$router.push('/home');
+                        }, function () {
+                            _this.$router.push('/home');
+                        });
+                    }
                 }
                 console.log(res);
             }

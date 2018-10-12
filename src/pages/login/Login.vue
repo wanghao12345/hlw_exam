@@ -89,6 +89,7 @@
                     this.saveUserInfo(res);
                 }else{
                     this.msg = res.data;
+                    this.$loadingClose();
                 }
             },
             /**

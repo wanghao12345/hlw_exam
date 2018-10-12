@@ -65,12 +65,15 @@
              */
             checkLoginFormNull () {
                 if(this.loginForm.username.replace(/\s+/g,"") == ""){
+                    this.$loadingClose();
                     this.msg = '请输入手机号';
                     return false;
                 }else if(this.loginForm.password.replace(/\s+/g,"") == ""){
+                    this.$loadingClose();
                     this.msg = '请输入登录密码';
                     return false;
                 }else if(!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(this.loginForm.username))){
+                    this.$loadingClose();
                     this.msg = '手机号码格式不对';
                     return false;
                 }else{

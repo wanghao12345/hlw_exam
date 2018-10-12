@@ -8,7 +8,7 @@
         </div>
         <div class="center-name">
             <img src="../../../static/img/center-headimg.png" alt="头像">
-            <span>刘晓光</span>
+            <span id="userName"></span>
         </div>
         <div class="center-list">
             <router-link to="/record" tag="div" class="item">
@@ -41,12 +41,16 @@
 
 <script>
     import {removeStore} from '@/config/localStorage'
+    import {getStore} from '@/config/localStorage'
     export default {
         name: "MyCenter",
         data () {
             return {
 
             }
+        },
+        mounted () {
+            document.getElementById('userName').innerText = getStore('tokenUserName');
         },
         methods: {
             /**

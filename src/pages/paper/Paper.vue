@@ -141,7 +141,7 @@
                         this.isNextPaperText = '下一题';
                     }
 
-                    // this.isNextPaper = false;
+                    this.isNextPaper = false;
                     for (var i = 0; i < this.PaperSingleStatus.length; i++){
                         this.PaperSingleStatus[i].status = false;
                     }

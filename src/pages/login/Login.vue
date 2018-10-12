@@ -83,9 +83,10 @@
              */
             async handleLoginRequest () {
                 let res = await sendLogin(this.loginForm.username, this.loginForm.password);
+                console.log(res);
                 this.$loadingClose();
                 if(res.token){
-                    this.saveUserInfo(res.token);
+                    this.saveUserInfo(res);
                 }else{
                     this.msg = res.data;
                 }
@@ -93,10 +94,11 @@
             /**
              * 保存个人信息
              */
-            saveUserInfo (token) {
+            saveUserInfo (res) {
                 setStore('loginUserName', this.loginForm.username);
                 setStore('loginPassWord', this.loginForm.password);
-                setStore('token', token);
+                setStore('token', res.token);
+                setStore('tokenUserName', res.data);
                 this.$router.push('/home');
             }
         }

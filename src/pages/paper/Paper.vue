@@ -164,7 +164,6 @@
                     this.getCurrentPaperData();
 
                 }else{
-
                     if(res.code === "-50"){
                         this.$myAlertOpen(res.msg, function () {
                             _this.$router.push('/login');
@@ -301,7 +300,6 @@
                         }
                     });
                 }else{
-
                     if(res.code === "-50"){
                         this.$myAlertOpen(res.msg, function () {
                             _this.$router.push('/login');

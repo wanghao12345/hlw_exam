@@ -99,6 +99,7 @@
             }
         },
         mounted () {
+
             this.$loadingOpen();
             this.getExamPaper();
             this.getStartExamTime();

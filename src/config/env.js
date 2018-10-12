@@ -11,8 +11,7 @@ import {getStore} from './localStorage'
 
 // let baseUrl = 'http://127.0.0.1:8080';
 let baseUrl = 'http://testexam.hlxy.com';
-let token = getStore('token');
+
 export {
-    baseUrl,
-    token
+    baseUrl
 }

@@ -35,6 +35,7 @@
             }
         },
         mounted() {
+
             let loginUserName = getStore('loginUserName');
             let loginPassWord = getStore('loginPassWord');
             let token = getStore('token');

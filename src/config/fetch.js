@@ -1,9 +1,11 @@
+import {getStore} from './localStorage'
+
 import {
-	baseUrl,
-    token
+	baseUrl
 } from './env'
 
 export default async(url = '', data = {}, type = 'GET', method = 'fetch') => {
+    let token = getStore('token');
 	type = type.toUpperCase();
 	url = baseUrl + url;
 

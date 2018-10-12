@@ -92,6 +92,7 @@
         margin-top: 0.5rem;
         background-color: white;
         border-radius: 5px;
+        list-style: none;
      }
     .record-box ul li .top{
         width: 100%;

@@ -25,6 +25,10 @@ export const modifyPwd = (oldPwd, newPwd) => fetch('/h5/user/updatePassword', {
 export const getCurExam = () => fetch('/h5/exam/getCurExam', {}, 'POST');
 
 /**
+ * 教材下载
+ */
+export const getExamData = () => fetch('/h5/exam/downStudyData', {}, 'POST');
+/**
  * 提交答案
  */
 export const submitExam = (id, ids, ans, st) => fetch('/h5/exam/submitExam', {

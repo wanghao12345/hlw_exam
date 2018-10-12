@@ -2,20 +2,20 @@
     <div class="home-box">
         <h1 class="l-title">公务员诚信培训在线考试</h1>
         <div class="item-box item-box1" v-bind:class="{item_box_no : !isAllowExam}">
-            <div class="item-icon item-icon1">
+            <div class="item-icon item-icon1"  @click="handleStartExam">
                 <img v-show="isAllowExam" src="../../../static/img/home-icon1.png" alt="开始考试">
                 <img v-show="!isAllowExam" src="../../../static/img/home-icon1-no.png" alt="开始考试">
             </div>
             <div class="item-text item-text1" @click="handleStartExam">开始考试</div>
         </div>
         <div class="item-box item-box2">
-            <div class="item-icon item-icon2">
+            <div class="item-icon item-icon2" @click="handleGetExamData">
                 <img src="../../../static/img/home-icon2.png" alt="教材下载">
             </div>
-            <div class="item-text item-text2">教材下载</div>
+            <div class="item-text item-text2" @click="handleGetExamData">教材下载</div>
         </div>
         <div class="item-box item-box3">
-            <div class="item-icon item-icon3">
+            <div class="item-icon item-icon3" @click="handleGotoCenter">
                 <img src="../../../static/img/home-icon3.png" alt="个人中心">
             </div>
             <div class="item-text item-text3" @click="handleGotoCenter">个人中心</div>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+    import {getExamData} from '@/service/getData'
     export default {
         name: "Home",
         data () {
@@ -39,6 +40,12 @@
                 if(this.isAllowExam){
                     this.$router.push('/paper');
                 }
+            },
+            /**
+             * 教材下载
+             */
+            async handleGetExamData () {
+                let res = await getExamData();
             },
             /**
              * 个人中心

@@ -16,10 +16,10 @@ export default new Router({
     routes: [
         {
             path: '/',
-            redirect: '/login'
+            redirect: '/login/1'
         },
         {
-            path: '/login',
+            path: '/login/:examId',
             name: 'login',
             component: Login
         },

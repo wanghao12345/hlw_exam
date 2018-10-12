@@ -36,6 +36,7 @@
 
 <script>
     import {getCurExam, submitExam} from '@/service/getData'
+    import {getStore} from '@/config/localStorage'
     export default {
         name: "Paper",
         components: {
@@ -153,7 +154,8 @@
              */
             async getExamPaper () {
                 let _this = this;
-                let res = await getCurExam();
+                let id = getStore('examId');
+                let res = await getCurExam(id);
                 console.log(res);
                 if(res.code==='10'){
                     let data = res.data;

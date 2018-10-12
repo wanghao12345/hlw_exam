@@ -42,6 +42,8 @@
             if(loginUserName && loginPassWord && token){
                 this.$router.push('/home');
             }
+            setStore('examId', this.$route.params.examId);
+
         },
         methods: {
             /**

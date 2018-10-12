@@ -32,6 +32,9 @@
                 isAllowExam: true
             }
         },
+        mounted () {
+
+        },
         methods: {
             /**
              * 开始考试
@@ -46,7 +49,30 @@
              */
             async handleGetExamData () {
                 let res = await getExamData();
+                if(res.code === '10'){
+                    this.createDownload(res.data);
+                }else{
+                    if(res.code === "-50"){
+                        this.$myAlertOpen(res.msg, function () {
+                            _this.$router.push('/login');
+                        }, function () {
+                            _this.$router.push('/login');
+                        });
+                    }else{
+                        this.$myAlertOpen(res.msg);
+                    }
+                }
             },
+            /**
+             * 创建iframe资料下载
+             */
+            createDownload (url) {
+                let iframe = document.createElement("iframe")
+                iframe.style.display = "none";
+                iframe.src = url;
+                document.body.appendChild(iframe);
+            },
+
             /**
              * 个人中心
              */

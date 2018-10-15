@@ -5,7 +5,7 @@
                 <img src="../../../static/img/result-back.png" alt="返回">
             </router-link>
             <div class="score-box">
-                <canvas id="score-canvas" width="160" height="160"></canvas>
+                <canvas id="score-canvas" width="180" height="180"></canvas>
             </div>
             <div class="result-content">
                 <ul>
@@ -73,6 +73,7 @@
             this.examTitle = this.$route.params.examTitle;
             var time_canvas = document.getElementById("score-canvas");
             this.drawMain(time_canvas, this.paperGetScore, "#ffffff", "#e8e8e8", this.resultStatus);
+            // this.drawMain(time_canvas, this.paperGetScore, "#ffffff", "#ffffff", this.resultStatus);
         },
         methods: {
             drawMain(drawing_elem, percent, forecolor, bgcolor, isGood){
@@ -83,6 +84,7 @@
                 @bgcolor: 绘制圆环的背景色，颜色代码
                 */
                 var context = drawing_elem.getContext("2d");
+                console.log(document.getElementById("score-canvas").clientWidth);
                 var center_x = drawing_elem.width / 2;
                 var center_y = drawing_elem.height / 2;
                 var rad = Math.PI*2/100;
@@ -187,8 +189,8 @@
         align-items: center;
     }
     .score-box #score-canvas{
-        width: 9rem;
-        height: 9rem;
+        /*width: 9rem;*/
+        /*height: 9rem;*/
     }
     .result-content{
         width: 100%;

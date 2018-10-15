@@ -60,7 +60,8 @@
                 removeStore('loginUserName');
                 removeStore('loginPassWord');
                 removeStore('loginUserToken');
-                this.$router.push('/login');
+                let examId = getStore('examId');
+                this.$router.push('/login/' + examId);
             }
         }
     }

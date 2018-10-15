@@ -14,10 +14,10 @@ Vue.use(Router);
 
 export default new Router({
     routes: [
-        {
-            path: '/',
-            redirect: '/login/1'
-        },
+        // {
+        //     path: '/',
+        //     redirect: '/login/1'
+        // },
         {
             path: '/login/:examId',
             name: 'login',

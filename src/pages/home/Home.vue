@@ -33,7 +33,7 @@
             }
         },
         mounted () {
-
+            this.$loadingClose();
         },
         methods: {
             /**

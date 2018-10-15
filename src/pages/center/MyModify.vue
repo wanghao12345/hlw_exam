@@ -38,6 +38,9 @@
                 reNewPwd: '',
             }
         },
+        mounted () {
+            this.$loadingClose();
+        },
         methods: {
             /**
              * 确定修改

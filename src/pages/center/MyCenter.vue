@@ -50,6 +50,7 @@
             }
         },
         mounted () {
+            this.$loadingClose();
             document.getElementById('userName').innerText = getStore('tokenUserName');
         },
         methods: {

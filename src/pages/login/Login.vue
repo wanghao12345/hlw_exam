@@ -35,6 +35,7 @@
             }
         },
         mounted() {
+            this.$loadingClose();
 
             let loginUserName = getStore('loginUserName');
             let loginPassWord = getStore('loginPassWord');

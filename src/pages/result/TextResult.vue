@@ -58,6 +58,7 @@
             }
         },
         mounted () {
+            this.$loadingClose();
 
             this.paperTotalScore = this.$route.params.totalScore;
             this.paperPassScore = this.$route.params.passScore;

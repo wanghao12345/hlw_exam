@@ -64,16 +64,21 @@
             this.paperPassScore = this.$route.params.passScore;
             this.paperGetScore = this.$route.params.score;
 
+            if(this.paperGetScore === undefined){
+                this.paperGetScore = 0;
+            }
+
             if(this.paperGetScore >= this.paperPassScore){
                 this.resultStatus = true;
             }else{
                 this.resultStatus = false;
             }
 
+            console.log(this.paperGetScore === undefined);
+
             this.examTitle = this.$route.params.examTitle;
             var time_canvas = document.getElementById("score-canvas");
             this.drawMain(time_canvas, this.paperGetScore, "#ffffff", "#e8e8e8", this.resultStatus);
-            // this.drawMain(time_canvas, this.paperGetScore, "#ffffff", "#ffffff", this.resultStatus);
         },
         methods: {
             drawMain(drawing_elem, percent, forecolor, bgcolor, isGood){
@@ -84,7 +89,6 @@
                 @bgcolor: 绘制圆环的背景色，颜色代码
                 */
                 var context = drawing_elem.getContext("2d");
-                console.log(document.getElementById("score-canvas").clientWidth);
                 var center_x = drawing_elem.width / 2;
                 var center_y = drawing_elem.height / 2;
                 var rad = Math.PI*2/100;
@@ -94,7 +98,6 @@
                 function backgroundCircle(){
                     context.save();
                     context.beginPath();
-                    // context.lineWidth = 7; //设置线宽
                     context.lineWidth = 50; //设置线宽
                     context.globalAlpha = 0.2;
                     var radius = center_x - context.lineWidth;
@@ -109,7 +112,6 @@
                 function foregroundCircle(n){
                     context.save();
                     context.strokeStyle = forecolor;
-                    // context.lineWidth = 7;
                     context.lineWidth = 50;
                     context.globalAlpha = 0.7;
                     context.lineCap = "round";
@@ -126,24 +128,19 @@
                 function text(n, isGood){
                     context.save(); //save和restore可以保证样式属性只运用于该段canvas元素
                     context.fillStyle = forecolor;
-                    // var font_size = 15;
                     var font_size = 150;
                     context.font = font_size + "px Helvetica";
                     var text_width1 = context.measureText('本次考试得分').width;
-                    // context.fillText('本次考试得分',center_x-text_width1/2, center_y + font_size/2 - 30);
                     context.fillText('本次考试得分',center_x-text_width1/2, center_y + font_size/2 - 280);
 
-                    // font_size = 30;
                     font_size = 300;
                     context.font = font_size + "px Helvetica";
                     var text_width = context.measureText(n.toFixed(0)).width;
                     context.fillText(n.toFixed(0), center_x-text_width/2, center_y + font_size/2);
 
                     font_size = 150;
-                    // font_size = 15;
                     context.font = font_size + "px Helvetica";
                     var text_width1 = context.measureText(isGood).width;
-                    // context.fillText(isGood,center_x-text_width1/2, center_y + font_size/2 + 30);
                     context.fillText(isGood,center_x-text_width1/2, center_y + font_size/2 + 300);
                     context.restore();
                 }

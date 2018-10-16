@@ -5,7 +5,7 @@
                 <img src="../../../static/img/result-back.png" alt="返回">
             </router-link>
             <div class="score-box">
-                <canvas id="score-canvas" width="180" height="180"></canvas>
+                <canvas id="score-canvas" width="1688" height="1688"></canvas>
             </div>
             <div class="result-content">
                 <ul>
@@ -94,7 +94,8 @@
                 function backgroundCircle(){
                     context.save();
                     context.beginPath();
-                    context.lineWidth = 7; //设置线宽
+                    // context.lineWidth = 7; //设置线宽
+                    context.lineWidth = 50; //设置线宽
                     context.globalAlpha = 0.2;
                     var radius = center_x - context.lineWidth;
                     context.lineCap = "round";
@@ -108,7 +109,8 @@
                 function foregroundCircle(n){
                     context.save();
                     context.strokeStyle = forecolor;
-                    context.lineWidth = 7;
+                    // context.lineWidth = 7;
+                    context.lineWidth = 50;
                     context.globalAlpha = 0.7;
                     context.lineCap = "round";
                     var radius = center_x - context.lineWidth;
@@ -124,20 +126,25 @@
                 function text(n, isGood){
                     context.save(); //save和restore可以保证样式属性只运用于该段canvas元素
                     context.fillStyle = forecolor;
-                    var font_size = 15;
+                    // var font_size = 15;
+                    var font_size = 150;
                     context.font = font_size + "px Helvetica";
                     var text_width1 = context.measureText('本次考试得分').width;
-                    context.fillText('本次考试得分',center_x-text_width1/2, center_y + font_size/2 - 30);
+                    // context.fillText('本次考试得分',center_x-text_width1/2, center_y + font_size/2 - 30);
+                    context.fillText('本次考试得分',center_x-text_width1/2, center_y + font_size/2 - 280);
 
-                    font_size = 30;
+                    // font_size = 30;
+                    font_size = 300;
                     context.font = font_size + "px Helvetica";
                     var text_width = context.measureText(n.toFixed(0)).width;
                     context.fillText(n.toFixed(0), center_x-text_width/2, center_y + font_size/2);
 
-                    font_size = 15;
+                    font_size = 150;
+                    // font_size = 15;
                     context.font = font_size + "px Helvetica";
                     var text_width1 = context.measureText(isGood).width;
-                    context.fillText(isGood,center_x-text_width1/2, center_y + font_size/2 + 30);
+                    // context.fillText(isGood,center_x-text_width1/2, center_y + font_size/2 + 30);
+                    context.fillText(isGood,center_x-text_width1/2, center_y + font_size/2 + 300);
                     context.restore();
                 }
                 //执行动画
@@ -189,8 +196,8 @@
         align-items: center;
     }
     .score-box #score-canvas{
-        /*width: 9rem;*/
-        /*height: 9rem;*/
+        width: 9rem;
+        height: 9rem;
     }
     .result-content{
         width: 100%;

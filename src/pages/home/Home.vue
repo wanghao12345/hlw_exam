@@ -35,6 +35,20 @@
         },
         mounted () {
             this.$loadingClose();
+
+            let token = getStore('token');
+            if(token === null || token ==="" || token === undefined){
+                var _this = this;
+                let id = getStore('examId');
+                this.$myAlertOpen('请扫码进入该考试系统！', function () {
+                    _this.$router.push('/login/'+id);
+                }, function () {
+                    _this.$router.push('/login/'+id);
+                });
+            }
+
+
+
         },
         methods: {
             /**

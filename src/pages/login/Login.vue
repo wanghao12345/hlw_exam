@@ -43,6 +43,7 @@
             if(loginUserName && loginPassWord && token){
                 this.$router.push('/home');
             }
+
             setStore('examId', this.$route.params.examId);
 
         },
@@ -67,6 +68,7 @@
              * 验证空
              */
             checkLoginFormNull () {
+                console.log(/^\+?[1-9][0-9]*$/.test(this.$route.params.examId));
                 if(this.loginForm.username.replace(/\s+/g,"") == ""){
                     this.$loadingClose();
                     this.msg = '请输入手机号';
@@ -78,6 +80,10 @@
                 }else if(!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(this.loginForm.username))){
                     this.$loadingClose();
                     this.msg = '手机号码格式不对';
+                    return false;
+                }else if(!(/^\+?[1-9][0-9]*$/.test(this.$route.params.examId))){
+                    this.$loadingClose();
+                    this.$myAlertOpen('请扫码进入该考试系统！');
                     return false;
                 }else{
                     this.msg = '';

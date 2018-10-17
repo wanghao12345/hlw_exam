@@ -103,7 +103,6 @@
 
             this.$loadingOpen();
 
-
             let id = getStore('examId');
             let _this = this;
             if(id === null || id === "" || id === undefined || id ==="null" || id==="undefined"){

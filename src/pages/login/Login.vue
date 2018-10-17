@@ -36,14 +36,6 @@
         },
         mounted() {
             this.$loadingClose();
-
-            let loginUserName = getStore('loginUserName');
-            let loginPassWord = getStore('loginPassWord');
-            let token = getStore('token');
-            if(loginUserName && loginPassWord && token){
-                this.$router.push('/home');
-            }
-
             setStore('examId', this.$route.params.examId);
 
         },

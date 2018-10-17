@@ -42,6 +42,7 @@
 </template>
 
 <script>
+    import {getStore} from '@/config/localStorage'
     export default {
         name: "TextResult",
         data () {

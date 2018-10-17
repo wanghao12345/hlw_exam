@@ -28,6 +28,7 @@
 
 <script>
     import {getHistoryRecord} from '@/service/getData'
+    import {getStore} from '@/config/localStorage'
     export default {
         name: "MyRecord",
         data () {

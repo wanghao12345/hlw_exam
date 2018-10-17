@@ -29,6 +29,7 @@
 
 <script>
     import {modifyPwd} from '@/service/getData'
+    import {getStore} from '@/config/localStorage'
     export default {
         name: "MyModify",
         data () {

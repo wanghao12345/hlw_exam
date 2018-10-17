@@ -25,6 +25,7 @@
 
 <script>
     import {getExamData} from '@/service/getData'
+    import {getStore} from '@/config/localStorage'
     export default {
         name: "Home",
         data () {
@@ -53,10 +54,11 @@
                     this.createDownload(res.data);
                 }else{
                     if(res.code === "-50"){
+                        let id = getStore('examId');
                         this.$myAlertOpen(res.msg, function () {
-                            _this.$router.push('/login');
+                            _this.$router.push('/login/'+id);
                         }, function () {
-                            _this.$router.push('/login');
+                            _this.$router.push('/login/'+id);
                         });
                     }else{
                         this.$myAlertOpen(res.msg);

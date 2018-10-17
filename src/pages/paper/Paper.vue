@@ -102,7 +102,19 @@
         mounted () {
 
             this.$loadingOpen();
-            this.getExamPaper();
+
+
+            let id = getStore('examId');
+            let _this = this;
+            if(id === null || id === "" || id === undefined || id ==="null" || id==="undefined"){
+                this.$myAlertOpen('请先扫码登录,然后再考试！', function () {
+                    _this.$router.push('/home');
+                }, function () {
+                    _this.$router.push('/home');
+                });
+            }else{
+                this.getExamPaper();
+            }
             this.getStartExamTime();
         },
         methods: {
@@ -169,9 +181,9 @@
                 }else{
                     if(res.code === "-50"){
                         this.$myAlertOpen(res.msg, function () {
-                            _this.$router.push('/login');
+                            _this.$router.push('/login/'+id);
                         }, function () {
-                            _this.$router.push('/login');
+                            _this.$router.push('/login/'+id);
                         });
                     }else{
                         this.$myAlertOpen(res.msg, function () {

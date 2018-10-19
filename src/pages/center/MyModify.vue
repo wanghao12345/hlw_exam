@@ -85,6 +85,10 @@
                     this.$myAlertOpen('原密码和新密码不能相同！');
                     return false;
                 }
+                if (this.newPwd.replace(/\s+/g,"").split("").length < 6 || this.newPwd.replace(/\s+/g,"").split("").length > 16){
+                    this.$myAlertOpen('新密码长度为6到16个字符！');
+                    return false;
+                }
                 return true;
             },
             /**

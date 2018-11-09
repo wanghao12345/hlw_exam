@@ -29,14 +29,17 @@
                 msg: '',
                 loginForm: {
                     username: '',
-                    password: ''
+                    password: '',
+                    paperId: ''
                 },
                 clickLoginBtn: false
             }
         },
         mounted() {
             this.$loadingClose();
-            setStore('examId', this.$route.params.examId);
+            let examId = this.$route.params.examId;
+            this.loginForm.paperId = examId;
+            setStore('examId', examId);
 
         },
         methods: {

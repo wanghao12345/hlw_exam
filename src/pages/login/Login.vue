@@ -89,7 +89,7 @@
              * 验证账号
              */
             async handleLoginRequest () {
-                let res = await sendLogin(this.loginForm.username, this.loginForm.password);
+                let res = await sendLogin(this.loginForm.username, this.loginForm.password, this.loginForm.paperId);
                 console.log(res);
                 this.$loadingClose();
                 if(res.token){

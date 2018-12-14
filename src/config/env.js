@@ -8,7 +8,12 @@
  */
 
 // let baseUrl = 'http://127.0.0.1:8080';
-let baseUrl = 'http://adminex.hlxy.com';
+
+// 线上
+// let baseUrl = 'http://adminex.hlxy.com';
+
+// 测试
+let baseUrl = 'http://testexam.hlxy.com/'
 
 export {
     baseUrl

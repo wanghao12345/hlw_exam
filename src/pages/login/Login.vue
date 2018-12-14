@@ -72,10 +72,6 @@
                     this.$loadingClose();
                     this.msg = '请输入登录密码';
                     return false;
-                }else if(!(/^1[3|4|5|8|7][0-9]\d{4,8}$/.test(this.loginForm.username))){
-                    this.$loadingClose();
-                    this.msg = '手机号码格式不对';
-                    return false;
                 }else if(!(/^\+?[1-9][0-9]*$/.test(this.$route.params.examId))){
                     this.$loadingClose();
                     this.$myAlertOpen('请扫码进入该考试系统！');

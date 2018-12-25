@@ -8,6 +8,8 @@ import TextResult from '@/pages/result/TextResult'
 import MyCenter from '@/pages/center/MyCenter'
 import MyRecord from '@/pages/center/MyRecord'
 import MyModify from '@/pages/center/MyModify'
+import StudyOnline from '@/pages/study/StudyOnline'
+import PDF from '@/pages/plug/pdf/PDF'
 
 
 Vue.use(Router);
@@ -52,6 +54,16 @@ export default new Router({
             path: '/record',
             name: 'record',
             component: MyRecord
+        },
+        {
+            path: '/study',
+            name: 'study',
+            component: StudyOnline
+        },
+        {
+            path: '/pdf',
+            name: 'PDF',
+            component: PDF
         }
     ]
 })

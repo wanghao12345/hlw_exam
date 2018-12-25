@@ -38,5 +38,9 @@
     "vue-template-compiler": "^2.5.17",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0"
+  },
+  "dependencies": {
+    "js-base64": "^2.4.5",
+    "pdfjs-dist": "^2.0.489"
   }
 }

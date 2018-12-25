@@ -62,22 +62,8 @@
             /**
              * 教材下载
              */
-            async handleGetExamData () {
-                let res = await getExamData();
-                if(res.code === '10'){
-                    this.createDownload(res.data);
-                }else{
-                    if(res.code === "-50"){
-                        let id = getStore('examId');
-                        this.$myAlertOpen(res.msg, function () {
-                            _this.$router.push('/login/'+id);
-                        }, function () {
-                            _this.$router.push('/login/'+id);
-                        });
-                    }else{
-                        this.$myAlertOpen(res.msg);
-                    }
-                }
+            handleGetExamData () {
+                this.$router.push('/study');
             },
             /**
              * 创建iframe资料下载

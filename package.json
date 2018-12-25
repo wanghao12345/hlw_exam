@@ -41,6 +41,7 @@
   },
   "dependencies": {
     "js-base64": "^2.4.5",
-    "pdfjs-dist": "^2.0.489"
+    "pdfjs-dist": "^2.0.489",
+    "vue-pdf": "^4.0.5"
   }
 }

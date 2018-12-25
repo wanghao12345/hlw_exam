@@ -16,54 +16,6 @@
                     <span class="right">开始学习></span>
                 </p>
             </div>
-
-
-          <!--  <div class="item">
-                <p class="title">
-                   考试名称时间覅几十块JFK数据库附件是客服事件发生口角福克斯附件是JFK数据库
-                </p>
-                <p class="content">
-                    <span class="left">在线学习</span>
-                    <span class="right">开始学习></span>
-                </p>
-            </div>
-            <div class="item">
-                <p class="title">
-                   考试名称时间覅几十块JFK数据库附件是客服事件发生口角福克斯附件是JFK数据库
-                    考试名称时间覅几十块JFK数据库附件是客服事件发生口角福克斯附件是JFK数据库
-                </p>
-                <p class="content">
-                    <span class="left">在线学习</span>
-                    <span class="right">开始学习></span>
-                </p>
-            </div>
-            <div class="item">
-                <p class="title">
-                   考试名称时间覅几十块JFK数据库附件是客服事件发生口角福克斯附件是JFK数据库
-                </p>
-                <p class="content">
-                    <span class="left">在线学习</span>
-                    <span class="right">开始学习></span>
-                </p>
-            </div>
-            <div class="item">
-                <p class="title">
-                   考试名称时间覅几十块JFK数据库附件是客服事件发生口角福克斯附件是JFK数据库
-                </p>
-                <p class="content">
-                    <span class="left">在线学习</span>
-                    <span class="right">开始学习></span>
-                </p>
-            </div>
-            <div class="item">
-                <p class="title">
-                   考试名称时间覅几十块JFK数据库附件是客服事件发生口角福克斯附件是JFK数据库
-                </p>
-                <p class="content">
-                    <span class="left">在线学习</span>
-                    <span class="right">开始学习></span>
-                </p>
-            </div>-->
         </div>
     </div>
 </template>
@@ -103,9 +55,7 @@
             },
 
             loadingPDF (url) {
-                // console.log(id)
-                // this.$showPDF(id)
-                this.$router.push({ name: 'PDF', query: { url: Base64.encode(url) } })
+                this.$router.push({ name: 'PDF', query: { url: url } })
             }
         }
     }

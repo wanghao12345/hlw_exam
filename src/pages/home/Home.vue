@@ -12,7 +12,7 @@
             <div class="item-icon item-icon2" @click="handleGetExamData">
                 <img src="../../../static/img/home-icon2.png" alt="教材下载">
             </div>
-            <div class="item-text item-text2" @click="handleGetExamData">教材下载</div>
+            <div class="item-text item-text2" @click="handleGetExamData">在线学习</div>
         </div>
         <div class="item-box item-box3">
             <div class="item-icon item-icon3" @click="handleGotoCenter">

@@ -55,7 +55,7 @@
             },
 
             loadingPDF (url) {
-                this.$router.push({ name: 'PDF', query: { url: url } })
+                this.$router.push({ name: 'PDF', query: { url: Base64.encode(url) } })
             }
         }
     }

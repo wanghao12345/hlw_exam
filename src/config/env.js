@@ -13,7 +13,7 @@
 // let baseUrl = 'http://adminex.hlxy.com';
 
 // 测试
-let baseUrl = 'http://testexam.hlxy.com/'
+let baseUrl = 'http://testexam.hlxy.com'
 
 export {
     baseUrl
